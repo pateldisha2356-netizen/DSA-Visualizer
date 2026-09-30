@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tree Visualizer — DSA LAB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/visualizer.css">
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="../index.html"><span class="mark">◈</span> DSA LAB</a>
+    <nav class="mainnav" id="mainnav">
+      <a href="sorting.html" data-nav="sorting">Sorting</a>
+      <a href="searching.html" data-nav="searching">Searching</a>
+      <a href="linked-list.html" data-nav="linked-list">Linked List</a>
+      <a href="trees.html" data-nav="trees">Trees</a>
+      <a href="graphs.html" data-nav="graphs">Graphs</a>
+    </nav>
+    <div style="display:flex;align-items:center;">
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <div class="banner"><div class="banner-inner" id="errorBanner"></div></div>
+
+  <main class="viewport">
+    <div class="app-layout">
+      <aside class="sidebar">
+        <h4>Sorting</h4>
+        <a href="sorting.html?algo=bubble">Bubble</a>
+        <a href="sorting.html?algo=selection">Selection</a>
+        <a href="sorting.html?algo=insertion">Insertion</a>
+        <a href="sorting.html?algo=merge">Merge</a>
+        <a href="sorting.html?algo=quick">Quick</a>
+        <h4>Searching</h4>
+        <a href="searching.html?algo=linear">Linear</a>
+        <a href="searching.html?algo=binary">Binary</a>
+        <h4>Structures</h4>
+        <a href="linked-list.html">Linked List</a>
+        <a href="trees.html" class="active">Trees</a>
+        <h4>Graphs</h4>
+        <a href="graphs.html?algo=bfs">BFS</a>
+        <a href="graphs.html?algo=dfs">DFS</a>
+      </aside>
+
+      <div class="main-col">
+        <div class="panel">
+          <h3>🌲 Binary Search Tree Visualizer</h3>
+          <div class="config-row">
+            <div class="field">
+              <label>Build tree from values (comma separated)</label>
+              <input type="text" id="buildInput" style="min-width:260px;">
+            </div>
+            <button class="btn btn-ghost" id="buildBtn">Build</button>
+            <button class="btn btn-ghost" id="randomBuildBtn">🎲 Random</button>
+          </div>
+          <div class="config-row">
+            <div class="field">
+              <label>Operation</label>
+              <select id="opSelect">
+                <option value="insert">Insert</option>
+                <option value="search">Search</option>
+                <option value="inorder">Inorder Traversal</option>
+                <option value="preorder">Preorder Traversal</option>
+                <option value="postorder">Postorder Traversal</option>
+              </select>
+            </div>
+            <div class="field" id="valueField">
+              <label>Value</label>
+              <input type="number" id="valueInput" style="min-width:90px;">
+            </div>
+            <button class="btn btn-primary" id="runBtn">▶ Run</button>
+          </div>
+          <div class="tree-svg-box" id="treeSvgBox">
+            <svg id="treeSvg" viewBox="0 0 400 260" style="width:100%;"></svg>
+          </div>
+          <div class="tree-order-line" id="orderLine"></div>
+          <div class="controls">
+            <div class="controls-row">
+              <button class="ctl-btn" id="prevBtn">◀</button>
+              <button class="ctl-btn play" id="playBtn">▶</button>
+              <button class="ctl-btn" id="nextBtn">▶</button>
+              <button class="ctl-btn" id="resetBtn">↻</button>
+            </div>
+            <div class="progress-track"><input type="range" id="stepSlider" min="0" max="0" value="0"></div>
+            <div class="step-label" id="stepLabel"></div>
+          </div>
+        </div>
+        <div class="explain-box"><span class="bulb">💡</span><span id="explainText"></span></div>
+      </div>
+
+      <div class="panel stats-panel">
+        <h3>Structure Stats</h3>
+        <div class="stat-row"><span class="label">Structure</span><span class="value">Binary Search Tree</span></div>
+        <div class="stat-row"><span class="label">Time (avg)</span><span class="value">O(log n)</span></div>
+        <div class="stat-row"><span class="label">Time (worst)</span><span class="value">O(n)</span></div>
+        <div class="stat-row"><span class="label">Nodes</span><span class="value big" id="statNodes">0</span></div>
+        <div class="stat-row"><span class="label">Height</span><span class="value big" id="statHeight">0</span></div>
+        <div class="stat-row"><span class="label">Current Step</span><span class="value" id="statStep">0 / 0</span></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">DSA LAB — Trees run entirely in your browser (no backend endpoint yet).</footer>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/trees.js"></script>
+</body>
+</html>

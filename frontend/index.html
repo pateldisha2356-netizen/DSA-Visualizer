@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSA LAB — Visualize. Understand. Master.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="mark">◈</span> DSA LAB</a>
+    <nav class="mainnav" id="mainnav">
+      <a href="pages/sorting.html" data-nav="sorting">Sorting</a>
+      <a href="pages/searching.html" data-nav="searching">Searching</a>
+      <a href="pages/linked-list.html" data-nav="linked-list">Linked List</a>
+      <a href="pages/trees.html" data-nav="trees">Trees</a>
+      <a href="pages/graphs.html" data-nav="graphs">Graphs</a>
+    </nav>
+    <div style="display:flex;align-items:center;">
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">☰</button>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <main class="viewport">
+    <section class="hero">
+      <div class="eyebrow-badge">✦ Interactive learning platform</div>
+      <h1>Visualize. Understand.<br><span class="grad">Master algorithms.</span></h1>
+      <p>Learn data structures &amp; algorithms through step-by-step interactive visualizations — watch every comparison, swap, pointer, and traversal as it happens. Sorting, searching and graph runs are computed by a real Java + Spring Boot backend.</p>
+      <a class="btn btn-primary" href="pages/sorting.html">Start Visualizing →</a>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>11</b><span>Algorithms &amp; structures</span></div>
+        <div class="hero-stat"><b>5</b><span>Categories</span></div>
+        <div class="hero-stat"><b>Step-by-step</b><span>Full playback control</span></div>
+      </div>
+    </section>
+
+    <section class="cat-grid">
+      <a class="cat-card sorting" href="pages/sorting.html">
+        <div class="icon">▤</div>
+        <h3>Sorting</h3>
+        <div class="count">5 Algorithms · Java backend</div>
+        <div class="go">Explore →</div>
+      </a>
+      <a class="cat-card searching" href="pages/searching.html">
+        <div class="icon">◎</div>
+        <h3>Searching</h3>
+        <div class="count">2 Algorithms · Java backend</div>
+        <div class="go">Explore →</div>
+      </a>
+      <a class="cat-card linked" href="pages/linked-list.html">
+        <div class="icon">⛓</div>
+        <h3>Linked List</h3>
+        <div class="count">Insert · Delete · Search · Traverse</div>
+        <div class="go">Explore →</div>
+      </a>
+      <a class="cat-card trees" href="pages/trees.html">
+        <div class="icon">🌲</div>
+        <h3>Trees</h3>
+        <div class="count">BST · 3 traversal orders</div>
+        <div class="go">Explore →</div>
+      </a>
+      <a class="cat-card graphs" href="pages/graphs.html">
+        <div class="icon">◈</div>
+        <h3>Graphs</h3>
+        <div class="count">BFS &amp; DFS · Java backend</div>
+        <div class="go">Explore →</div>
+      </a>
+    </section>
+
+    <div class="container" style="padding-bottom:70px;">
+      <div class="card" style="padding:22px 26px;">
+        <h3 style="margin-bottom:10px;">How this project is wired together</h3>
+        <p style="color:var(--text-dim);font-size:14.5px;line-height:1.65;margin:0;">
+          Sorting, Searching, and Graphs call a real REST API (<code class="mono">/api/sort</code>, <code class="mono">/api/search</code>, <code class="mono">/api/graph</code>) served by the Spring Boot app in <code class="mono">/backend</code> — start it with <code class="mono">mvn spring-boot:run</code> before opening those pages. Linked List and Trees run entirely in this page's JavaScript, since the backend doesn't expose endpoints for them yet.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">DSA LAB — built for learning data structures &amp; algorithms, one step at a time.</footer>
+</div>
+
+<script src="js/app.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => markActiveNav(''));</script>
+</body>
+</html>
