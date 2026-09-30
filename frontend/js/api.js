@@ -11,8 +11,8 @@
    ========================================================= */
 
 const DsaApi = (() => {
-  // Change this if your backend runs somewhere other than localhost:8080.
-  const BASE_URL = 'http://localhost:8080/api';
+  // Live Spring Boot backend deployed on Render.
+  const BASE_URL = 'https://dsa-visualizer-backend-6heu.onrender.com/api';
 
   async function request(path, options) {
     let res;
@@ -20,18 +20,25 @@ const DsaApi = (() => {
       res = await fetch(BASE_URL + path, options);
     } catch (err) {
       throw new Error(
-        'Could not reach the backend at ' + BASE_URL + '. Is the Spring Boot server running? (mvn spring-boot:run)'
+        'Could not reach the backend at ' + BASE_URL + '. Please try again.'
       );
     }
+
     let data;
     try {
       data = await res.json();
     } catch (err) {
       throw new Error('Backend returned an invalid response.');
     }
+
     if (!res.ok) {
-      throw new Error(data && data.error ? data.error : ('Request failed with status ' + res.status));
+      throw new Error(
+        data && data.error
+          ? data.error
+          : ('Request failed with status ' + res.status)
+      );
     }
+
     return data;
   }
 
